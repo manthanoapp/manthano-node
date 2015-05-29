@@ -13,7 +13,7 @@ var jwt = require('jsonwebtoken');
 
 var port = process.env.PORT || 8080;
 var config = require('./config');
-var User = require('./app/model/user');
+var User = require('./app/models/user');
 
 // ===App configuration===
 // =======================
@@ -126,7 +126,7 @@ apiRouter.get('/', function (req, res) {
 
 apiRouter.route('/users')
     .post(function (req, res) {
-        // create a new instance of the User model
+        // create a new instance of the User models
         var user = new User();
 
         // set information
