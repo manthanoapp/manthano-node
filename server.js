@@ -87,6 +87,35 @@ apiRouter.post('/auth', function (req, res) {
         });
 });
 
+apiRouter.post('/users', function (req, res) {
+    // create a new instance of the User models
+    var user = new User();
+
+    // set information
+    user.name = req.body.name;
+    user.username = req.body.username;
+    user.password = req.body.password;
+
+    // save user and check for error
+    user.save(function (err) {
+        if (err) {
+            // duplicate entry
+            if (err.code == 11000) {
+                return res.json({
+                    success: false,
+                    message: 'A user with that username already exists. '
+                });
+            } else {
+                res.send(err);
+            }
+
+        }
+
+        res.json({message: 'User created!'});
+
+    });
+});
+
 // route middleware
 apiRouter.use(function (req, res, next) {
 
@@ -124,47 +153,15 @@ apiRouter.get('/', function (req, res) {
     res.json({message: 'Manthano api!'});
 });
 
-apiRouter.route('/users')
-    .post(function (req, res) {
-        // create a new instance of the User models
-        var user = new User();
+apiRouter.get('/users', function (req, res) {
+    User.find(function (err, users) {
+        if (err) {
+            res.send(err);
+        }
 
-        // set information
-        user.name = req.body.name;
-        user.username = req.body.username;
-        user.password = req.body.password;
-
-        // save user and check for error
-        user.save(function (err) {
-            if (err) {
-                // duplicate entry
-                if (err.code == 11000) {
-                    return res.json({
-                        success: false,
-                        message: 'A user with that username already exists. '
-                    });
-                } else {
-                    res.send(err);
-                }
-
-            }
-
-            res.json({message: 'User created!'});
-
-        });
-
-    })
-
-    .get(function (req, res) {
-        User.find(function (err, users) {
-            if (err) {
-                res.send(err);
-            }
-
-            res.json(users);
-        });
-    })
-;
+        res.json(users);
+    });
+});
 
 apiRouter.route('/users/:user_id')
     .get(function (req, res) {
