@@ -1,0 +1,31 @@
+{
+  "name": "manthano-node",
+  "version": "0.0.1",
+  "description": "Manthano web application in Node.js",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manthanoapp/manthano-node.git"
+  },
+  "keywords": [
+    "manthano",
+    "nodejs"
+  ],
+  "author": "ManthanoApp",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/manthanoapp/manthano-node/issues"
+  },
+  "homepage": "https://github.com/manthanoapp/manthano-node",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.12.4",
+    "express": "^4.12.4",
+    "jsonwebtoken": "^5.0.1",
+    "mongoose": "^4.0.4",
+    "morgan": "^1.5.3"
+  }
+}
