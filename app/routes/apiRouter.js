@@ -1,4 +1,4 @@
-/*ha he hi ho hu*/
+
 var express = require('express');
 // an instance of the express router
 var apiRouter = express.Router();
