@@ -10,12 +10,15 @@ var Schema = mongoose.Schema;
 
 
 var ActivitySchema = new Schema({
-    name: String,
-    description : String,
-    beginDate : Date,
+    name         : String,
+    description  : String,
+    beginDate    : Date,
     coverPicture : String,
-    active : Boolean,
-    holders: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
+    active       : Boolean,
+    //TODO: Unique values!
+    holders      : [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+    participants : [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+    events       : [{type: mongoose.Schema.Types.ObjectId, ref: 'Event'}]
 });
 
 

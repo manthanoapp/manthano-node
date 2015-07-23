@@ -7,12 +7,16 @@ var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt-nodejs');
 
 var UserSchema = new Schema({
-    name: String,
-    username: {type: String, required: true, index: {unique: true}},
+    name           : {type: String, required: true},
+    username       : {type: String, required: true, index: {unique: true}},
     // By setting select to false,
     // the password will not be returned when listing our users,
     // unless it is explicitly called.
-    password: {type: String, required: true, select: false}
+    password       : {type: String, required: true, select: false},
+    mail           : {type: String, required: true},
+    surname        : {type: String, required: true},
+    www            : String,
+    profilePicture : String
 
 });
 
