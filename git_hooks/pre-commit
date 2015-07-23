@@ -1,4 +1,0 @@
-#!/bin/bash
-rm -R ~/manthano/dump
-mongodump -d manthano-node -o ~/manthano/dump/
-git add ~/manthano/dump/
